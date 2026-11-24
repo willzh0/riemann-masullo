@@ -1,0 +1,62 @@
+# When the Mellin jet majorant holds for every Bruhat test
+
+Fix the number field, unitary extensions $\chi_\omega$, real parameter $a$, strip $\alpha\ge0$, exponent $s>1$, and one realized Markushevich family. Let $K=C_F^1$, write $g=\tau(e^x)u$ for a continuous homomorphic norm section, and define $\chi_\omega(\tau(e^x))=e^{i\beta_\omega x}$. At a site $z=(\omega,b_z,t_z)$ put $\nu_z=t_z+\beta_\omega$, $p_{z,m}=\|\Lambda_{z,m}\|\|x_{z,m}\|$, and $\kappa_z=\sum_{m<N_z}p_{z,m}$. The Hecke divisor is evaluated at $a+b_z+it_z$, whereas the Mellin circle is centered at $b_z+it_z$ and has radius $R=2\exp((4\alpha+s)/2)$. If $N_z=0$, then $\kappa_z=0$. [Majorant and index definitions](https://github.com/mccorvie/riemann-masullo/blob/8586f1c40558a900ba79fb41487c2567d4bc5268/RiemannMasullo/Ch10_TraceSpectral/Sec3_Isolated.lean#L119)
+
+The following three assertions are equivalent.
+
+1. Every compact Bruhat test has the majorant in issue 7455.
+2. For each closed $U\subset K$ with $K/U\simeq\mathbb T^d\times A$, $A$ finite, some $C,N$ bound the sum of $\kappa_z$ over every finite family of sites on a character $\omega=(\ell,\eta)$ with $|\nu_z-n|\le1$, by $C(1+|n|+\|\ell\|_1)^N$, uniformly in integers $n$ and all characters of this quotient.
+3. On each such quotient some $D,E$ bound every $p_{z,m}$ by $D(1+|\nu_z|+\|\ell\|_1)^E$, uniformly in the retained jet order, the zero, and the character of the quotient.
+
+**From the tests to the local mass.** On the Fréchet space of smooth functions on all of $\mathbb R\times K/U$ supported in $[-1,1]\times K/U$, define $P_T(f)=\sum_{z\in T}\kappa_z|L_z(f)|$ with $L_z$ the Mellin evaluation at $b_z+R+it_z$. Each finite $P_T$ is a continuous seminorm. Pointwise boundedness makes the closed sets $\bigcap_T\{P_T\le j\}$, $j=1,2,\dots$, a cover. A set with interior bounds every $P_T$ on a neighborhood of zero by the triangle inequality and translation. Scaling yields $P_T(f)\le C\|f\|_{C^N}$. For $f(x,u)=h(x)e^{-inx}\overline{\omega(u)}$ with $0\le h\in C_c^\infty((-1/4,1/4))$ of positive integral, the derivative norm is $O((1+|n|+\|\ell\|_1)^N)$. At every relevant site, the real part of $L_z(f)$ is at least
+$$
+c\,e^{-(\alpha+R)/4}\cos(1/4)\int h\,dx>0.
+$$
+Here $c>0$ is the fixed product Haar normalization relative to probability Haar on $K$. The continuous norm lift is unitary and restricts to $\omega$ on $K$. These facts fix both the angular conjugation and the plus sign in $\nu_z$. The proof uses no prior local-finiteness assumption. If assertion 2 fails on this quotient, every closed set above has empty interior. Hence a residual set of tests in this fixed-support space already has divergent weighted right-endpoint sums. [Unitary lifts](https://github.com/mccorvie/riemann-masullo/blob/8586f1c40558a900ba79fb41487c2567d4bc5268/RiemannMasullo/Ch10_TraceSpectral/Sec2.lean#L644) · [Norm twist](https://github.com/mccorvie/riemann-masullo/blob/8586f1c40558a900ba79fb41487c2567d4bc5268/RiemannMasullo/Ch03_IdelicZeta/Sec2.lean#L100) · [Product measure](https://github.com/mccorvie/riemann-masullo/blob/8586f1c40558a900ba79fb41487c2567d4bc5268/RiemannMasullo/Ch10_TraceSpectral/Sec4a.lean#L983)
+
+**From the local mass to the tests.** Every test belongs to a fixed elementary stage. For an initial stage $H/U$ the open subgroup $H$ contains the connected real factor and $H\cap K$ is open of finite index in $K$. Its compact subgroup $U$ has trivial real projection. The quotient $K/U$ is compact abelian Lie because its open finite-index subgroup $(H\cap K)/U$ is. Extension by zero on the other cosets is smooth. Conversely every compactly supported smooth function on a full quotient pulls back to a Bruhat test. For a test on one such quotient, characters nontrivial on $U$ give zero. Take probability Haar on the quotient. For $|\delta|=R$ integrate $e^{(b_z+\Re\delta)x}f(x,u)$ against the frequency $(\nu_z+\Im\delta,\ell,\eta)$. Its compact support is fixed and its derivatives of every fixed order are uniformly bounded in the real exponent. Integration by parts in the joint real and torus variables bounds the entire Mellin circle by $C_{f,L}(1+|\nu_z|+\|\ell\|_1)^{-L}$ for any $L$. Assign every ordinate to a nearest integer and take $L>N+d+1$. Summation of the resulting lattice bound gives assertion 1 with the circle supremum itself as $M_z$. [Fixed-stage realization](https://github.com/mccorvie/riemann-masullo/blob/8586f1c40558a900ba79fb41487c2567d4bc5268/RiemannMasullo/AppD_SchwartzBruhat/Sec3b.lean#L1218) · [Stage covering](https://github.com/mccorvie/riemann-masullo/blob/8586f1c40558a900ba79fb41487c2567d4bc5268/RiemannMasullo/AppD_SchwartzBruhat/Sec3b.lean#L1335)
+
+**Reduction to the individual coordinates.** Assertion 2 implies 3 by taking a singleton and using $p_{z,m}\le\kappa_z$. For the converse put $\psi_\omega(\tau(e^x)u)=\omega(u)$. The multiplicity for $\chi_\omega$ at $a+b_z+it_z$ equals the multiplicity for $\psi_\omega$ at $a+b_z+i\nu_z$. Both continuations in Chapters 6 and Appendix B are the same chosen continuation. The repository proves the divisor translation for arbitrary pure imaginary norm twists and the multiplicity bound on a fixed quotient. Its finite list of angular flows projects to one-parameter subgroups of $\mathbb T^d\times A$, so their derivative norms on $(\ell,\eta)$ are $O_U(\|\ell\|_1)$. For each bin, put $T=\lceil c_U(1+|n|+\|\ell\|_1)\rceil$ large enough to contain all of its normalized divisors and angular flow frequencies. The count gives total arithmetic multiplicity $O_U(T^e)$ there. The retained multiplicity is bounded by the arithmetic multiplicity, including at strip endpoints. Multiplying the count by assertion 3 gives assertion 2. The constants may vary freely with $U$. [Divisor translation](https://github.com/mccorvie/riemann-masullo/blob/8586f1c40558a900ba79fb41487c2567d4bc5268/RiemannMasullo/Ch01_Introduction/Sec4.lean#L3517) · [Joint multiplicity count](https://github.com/mccorvie/riemann-masullo/blob/8586f1c40558a900ba79fb41487c2567d4bc5268/RiemannMasullo/AppB_AnalyticNT/Sec4b.lean#L15861) · [Merged proof of the count](https://github.com/mccorvie/riemann-masullo/pull/7273) · [Truncation](https://github.com/mccorvie/riemann-masullo/blob/8586f1c40558a900ba79fb41487c2567d4bc5268/RiemannMasullo/Ch10_TraceSpectral/Sec2.lean#L2090)
+
+Over $\mathbb Q$ the group $K\simeq\widehat{\mathbb Z}^{\times}$ is profinite, so each compact Lie quotient is finite. A fixed test has finitely many angular modes and the criterion requires only a potentially different polynomial for each individual component. For general $F$, changing the unitary lift by $|\cdot|^{i\gamma_\omega}$ shifts $t_z$ and $\beta_\omega$ in opposite directions. Changing the splitting shears the physical ordinate by a fixed linear functional of $\ell$ on each quotient, which preserves polynomial bounds. [Rational class group decomposition](https://github.com/mccorvie/riemann-masullo/blob/8586f1c40558a900ba79fb41487c2567d4bc5268/RiemannMasullo/AppA_AlgebraicNT/Sec2.lean#L682)
+
+The criterion concerns the universal scalar majorant in issue 7455. The discussion of issue 7241 treats the weaker complete-block trace series and gives fixed-component coordinate sufficiency, several equivalences under separate conditions, and a stronger special treatment for zeta. The criterion above permits simultaneous angular summation and arbitrary multiplicity without a new lower bound for the actual Hecke jets. No implication from the weaker complete-block assertion to individual bounds at general multiple zeros is used. The growth and spacing equivalences in this note are mathematical proofs. [Complete-block discussion](https://github.com/mccorvie/riemann-masullo/issues/7241#issuecomment-7126304685) · [Positive-width zeta criterion](https://github.com/mccorvie/riemann-masullo/issues/7455#issuecomment-7145348798)
+
+## Application at width zero
+
+For every fixed number field, $a\in\mathbb R$, and $s>1$, the following statements at $\alpha=0$ are equivalent.
+
+- All compact Bruhat tests satisfy issue 7455.
+- All compact Bruhat tests satisfy the complete-block assertion of issue 7241 for every rank-one insertion.
+- For each fixed compact Lie quotient some $c>0$ and $B\ge0$ satisfy
+  $$
+  |\nu_z-\nu_w|\ge c(1+|\nu_z|+\|\ell\|_1)^{-B}
+  $$
+  whenever $z,w$ are distinct retained sites of the same character $(\ell,\eta)$ on that quotient.
+
+The majorant gives summable complete blocks for every bounded insertion, so the second assertion can equally use compact or bounded insertions. At $\mathbb Q$ the spacing constants and exponents can depend on the individual Dirichlet character. The prior fixed-component interpolation argument admits the uniform estimates below because the Sobolev weight depends only on the log norm. [Majorant implies bounded-insertion summability](https://github.com/mccorvie/riemann-masullo/blob/8586f1c40558a900ba79fb41487c2567d4bc5268/RiemannMasullo/Ch10_TraceSpectral/Sec3_Isolated.lean#L70) · [Prior fixed-component result](https://github.com/mlyle/riemann-masullo/blob/094293aeeaf5b58f7b194e1e779aac4c330a6251/research/I314LineGaps.lean#L2186)
+
+Under the rank-one assertion, for each fixed $f$ a common constant bounds
+$$
+ |M_f(i t_z,\chi_\omega)|\,
+   \frac{\|\Lambda_{z,0}\|}{\|\Lambda_{z,0}-\Lambda_{w,0}\|}
+$$
+over all such pairs, by the main file's other-site span inequality. The denominator is positive by biorthogonality. Apply the fixed-stage Baire argument above to the family of these weighted evaluations, using their supremum. A bump conjugated by $\omega$ and modulated at the nearest integer to $\nu_z$ gives a uniform positive lower bound for its Mellin value. The ratios therefore grow at most polynomially in $1+|\nu_z|+\|\ell\|_1$. The isometric dual realization gives the common norm $\|\Lambda_{z,0}\|=(c_F\int(1+x^2)^{-s/2}\,dx)^{1/2}>0$. With $0<\gamma\le1$ and $2\gamma<s-1$,
+$$
+ \|\Lambda_{z,0}-\Lambda_{w,0}\|\le C_{s,\gamma,F}|\nu_z-\nu_w|^\gamma
+$$
+because $|e^{iv}-1|\le 2^{1-\gamma}|v|^\gamma$ and $|x|^{2\gamma}(1+x^2)^{-s/2}$ is integrable. This gives the spacing. Failure of the spacing forces one compact test and one rank-one insertion with divergent complete-block series. [Rank-one necessary estimate](https://github.com/mccorvie/riemann-masullo/blob/8586f1c40558a900ba79fb41487c2567d4bc5268/RiemannMasullo/Ch10_TraceSpectral/Sec3.lean#L2618)
+
+Conversely, put $H=1+|\nu_z|+\|\ell\|_1$ and $r=\tfrac12\min(1,cH^{-B})$. Choose $\vartheta\in C_c^\infty((-1,1))$ identically one near zero. In the convention $\widehat g(u)=\int g(x)e^{iux}\,dx$, prescribe
+$$
+ \widehat g(u)=\frac{i^m}{m!}(u-\nu_z)^m\,\vartheta((u-\nu_z)/r).
+$$
+Its derivatives interpolate the $m$th log moment and kill every other retained derivative on this component. Multiply the inverse Fourier transform by the inverse Haar mass and $\overline{\omega}$ to annihilate the other components. The quotient class of that physical vector has the same values of all the coordinate functionals as $x_{z,m}$, so dual totality identifies them. Scaling $y=rx$ in the squared primal norm and writing $q_m$ for the inverse transform of the fixed monomial bump gives
+$$
+ \|x_{z,m}\|^2
+ \le C_{F,m}r^{2m+1}\int |q_m(y)|^2(1+y^2/r^2)^{s/2}\,dy
+ \le C_{F,s,m}r^{2m+1-s}.
+$$
+Every retained $m$ obeys $m<(s-1)/2$. This is a finite set depending only on $s$. The corresponding $\|\Lambda_{z,m}\|^2=c_F\int |x|^{2m}(1+x^2)^{-s/2}\,dx$ are uniformly bounded. The resulting bound $p_{z,m}\ll_{F,s}r^{-(s-1)/2}$ is polynomial in $H$. Assertion 3 above now applies. [Bilinear pairing](https://github.com/mccorvie/riemann-masullo/blob/8586f1c40558a900ba79fb41487c2567d4bc5268/RiemannMasullo/Ch10_TraceSpectral/Sec2.lean#L414) · [Realized jets](https://github.com/mccorvie/riemann-masullo/blob/8586f1c40558a900ba79fb41487c2567d4bc5268/RiemannMasullo/Ch10_TraceSpectral/Sec2.lean#L716) · [Reciprocal norm](https://github.com/mccorvie/riemann-masullo/blob/8586f1c40558a900ba79fb41487c2567d4bc5268/RiemannMasullo/Ch10_TraceSpectral/Sec2.lean#L8447)
+
+At width zero one can also deduce the mass bound directly from spacing. An interval of length two on one component contains at most $1+O((1+|n|+\|\ell\|_1)^B)$ retained sites by interval packing, and each site has at most $\lceil(s-1)/2\rceil$ jets. The estimate above gives the explicit exponent $B(s+1)/2$ for its mass after adjusting the constant. This route uses only the strip's Fourier and Sobolev geometry.
