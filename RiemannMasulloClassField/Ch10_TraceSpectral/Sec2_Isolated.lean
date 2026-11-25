@@ -82,10 +82,11 @@ def normTwists (e : Step F) :
   let : IsGalois e.val F := e.property.1
   exact (primeDegree_ideleClass_normTwist_indexing e.val F e.property.2).choose
 
-/-- The unramified local Artin product for one cyclic base change, with an arbitrary
-finite set of exceptional base primes. Both factors use the project's genuine Hecke
-Euler factor. For prime degree the usual split and inert local computations imply
-this hypothesis for every continuous unitary character of the lower field. -/
+/-- Classical input: the local induction formula for a cyclic base change, translated
+to the project's finite Euler factors, outside a finite set of base primes. The lower
+character is any continuous unitary character. See John Tate, *Number theoretic
+background*, Corvallis (1979), §2.3.2 and §3.3.2, p. 14, for induction and the
+Frobenius determinant defining the nonarchimedean factor. -/
 def EulerComparison (e : Step F) (ν : U[e.val]) : Prop :=
   ∃ B : Finset (V[e.val]), ∀ (v : V[e.val]), v ∉ B → ∀ s : {z : ℂ // 1 < z.re},
     (∏' w : {w : V[F] // w.under (𝓞 e.val) = v},
@@ -147,7 +148,8 @@ private theorem bound_from_leaves
     · exact le_max_of_le_left (hM ψ hψ z)
     obtain ⟨e, ν, rfl⟩ := exists_primeDegree_norm_descent_of_nontrivial_stabilizer K ψ hψ
     calc
-      m(ν.comp (N(K, e)), z) = ∑ i, m(ν * (normTwists e i).val, z) := normPullback_multiplicity e ν (hEuler K hK e ν) z
+      m(ν.comp N(K, e), z) = ∑ i, m(ν * (normTwists e i).val, z) :=
+        normPullback_multiplicity e ν (hEuler K hK e ν) z
       _ ≤ ∑ _i : Fin (Module.finrank e.val K), B e :=
         Finset.sum_le_sum (fun i _ ↦ hB e _ _)
       _ = Module.finrank e.val K * B e := by simp
@@ -218,7 +220,6 @@ theorem exists_orbitFree_decomposition (ψ : U[F]) :
       · rw [multiset_sum_values, normPullback_multiplicity e ν (hEuler K hK e ν) z]
         exact Finset.sum_congr rfl (fun i _ ↦ horders i z)
   exact go _ F rfl .root ψ
-
 
 include hEuler in
 /-- Any upper bound on multiplicity divided by the field degree propagates with
