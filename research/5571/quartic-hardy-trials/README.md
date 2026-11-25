@@ -10,6 +10,8 @@ A second calculation certifies a trial directly in the Taylor-coefficient model 
 
 At **every** original grid index $n\ge10^{1200}$ the same character satisfies $U_n<0.076415386910838$. A radial approximation transfers the 512-term trial into admissible original polynomial coordinates with an explicit truncation and rounding budget. [Uniform bound on all late original rows](COFINAL-CANONICAL.md)
 
+At the original rows $n\ge2^{600000}$ an independently explicit clipped-predictor proof bounds $0\le U_n-(1-e^{-2G_\chi})<10^{-19}$, even before using any zero count. The verified-height result then bounds these actual rows by $4.1975849790140\cdot10^{-7}$. The same proof supplies a fixed-character rate shape over every number field. [Clipped outer prediction and explicit tail](CLIPPED-OUTER.md)
+
 A separate written argument constructs a convergent sequence of finite Gram-matrix bounds over arbitrary number fields. Its arithmetic inputs and convergence statement are given on their own page. [All-field Gram construction](../finite-ideal-gram/README.md)
 
 The quartic bound obtained independently from Platt's verified zeros and the two-sided zero-count tail is $G_\chi<2.09879293\cdot10^{-7}$. The following calculation uses the period of $\chi$ and the ordinary coefficients. Establishing $G_\chi=0$ remains open. [Verified-height calibration](https://github.com/willzh0/riemann-masullo/tree/da8d5a8b3252c16120606b0b513d445e88cfbd0f/research/5571/quartic-green-calibration)

@@ -1,0 +1,11 @@
+{
+  "fixed_clip_height": 100000,
+  "retained_height_blocks_abs_at_most": "79228162514264337593543950336",
+  "every_original_grid_index_from": "2^600000",
+  "quartic_exponent": 5,
+  "clip_error_bound_ceiling_1e24": 2839,
+  "squared_grid_error_ceiling_1e24": 5682,
+  "published_green_input_upper": "209879293/1000000000000000",
+  "squared_grid_bound_with_verified_height_ceiling_1e20": 41975849790139,
+  "grid_logarithmic_bound_with_verified_height_ceiling_1e20": 20987929300001
+}
