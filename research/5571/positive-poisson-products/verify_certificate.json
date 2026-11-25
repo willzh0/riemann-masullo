@@ -1,0 +1,8 @@
+{
+  "bits": 300,
+  "independent_direct_xi_endpoint_signs": 224,
+  "direct_xi_log_derivative_points": 4,
+  "true_remainder_upper_from_bracket_endpoints": "[3.2477849089297674823066028661508162752853406332253792676871905916106797838981e-8 +/- 3.04e-85]",
+  "verified_reflection_pair_height": 173,
+  "verified_quartet_height": 189
+}
