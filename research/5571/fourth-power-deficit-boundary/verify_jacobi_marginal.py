@@ -1,8 +1,8 @@
 """Integer-only certificate for whole rows of minimum rational Jacobi-class deficits."""
 
 from functools import cache
-from itertools import takewhile
-from math import gcd, isqrt, prod
+from fractions import Fraction
+from math import factorial, gcd, isqrt, prod
 
 
 ROWS = {
@@ -114,9 +114,36 @@ def verify_row(cutoff, q, weights):
     return min(margins)
 
 
+def verify_need_to_change_class(weights):
+    q, d = ROWS[12]
+    psmall = (3, 5, 7, 11, 13)
+    for p in psmall:
+        assert all(pow(a % p, (p-1)//2, p) == p-1 for a in (q, d))
+    # Both mixed cells are empty at the second sample. Bound the -- cell at sample 11.
+    log_two_upper = Fraction(694, 1000)
+    assert sum(log_two_upper**k / factorial(k) for k in range(6)) > 2
+    x = 11**4
+    numerator = 0
+    for p, _ in weights:
+        if p > x:
+            break
+        if any(pow(a % p, (p-1)//2, p) != p-1 for a in (q,d)):
+            continue
+        upper_integer = (p**256).bit_length()
+        n = p
+        while n <= x:
+            numerator += (x-n) * upper_integer
+            n *= p*p
+    complete_upper = Fraction(4*numerator, 256) * log_two_upper
+    deficit_lower = Fraction(x*x, 2) - complete_upper
+    assert deficit_lower > 128
+    return deficit_lower.numerator // deficit_lower.denominator
+
+
 if __name__ == "__main__":
     weights = odd_prime_weights(max(ROWS)**4)
     for cutoff, primes in ROWS.items():
         for q in primes:
             margin, j = verify_row(cutoff, q, weights)
             print(f"J={cutoff} q={q} min_margin_ppb={margin} at j={j}", flush=True)
+    print(f"J=12 fixed -- deficit at j=11 exceeds {verify_need_to_change_class(weights)}")
