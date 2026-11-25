@@ -59,3 +59,5 @@ python certify_periods.py --trial dilates-1-512.json --receipt replay-progressio
 ```
 
 The optional least-squares [trial selector](select_dilates.py) used a floating-point Gram matrix, selected candidates with different diagonal penalties and rounded the coefficients. Both independent verifiers start from the supplied integers. To repeat the search, use mesh one, reach 512, training height 12,000 and tail scale 5,000,000.
+
+An [effective finite-conductor accuracy theorem](CONDUCTOR-GRID.md) gives the same exponent and certified finite-grid error below $2\cdot10^{-19}$ for all primitive characters through conductor 400,000, including the principal character. A growing-conductor schedule gives one finite maximum per index and a uniform accuracy bound without a preliminary zero calculation.

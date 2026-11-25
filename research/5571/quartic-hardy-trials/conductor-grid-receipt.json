@@ -1,0 +1,18 @@
+{
+  "growing_family": {
+    "k_min": 2,
+    "conductor": "2^k",
+    "disk_exponent": "20k",
+    "least_stage": "2^(48000k^2)",
+    "squared_error_upper": "2^(-k)"
+  },
+  "maximum_conductor": 400000,
+  "fixed_disk_exponent": 70,
+  "retained_log_height_blocks": "2^100",
+  "clip_height": 125000,
+  "least_certified_grid_index": "2^750000",
+  "central_clipping_cost_upper_in_units_1e-24": 57624,
+  "tail_clipping_cost_upper_in_units_1e-24": 87,
+  "grid_squared_error_upper_in_units_1e-24": 115423,
+  "rational_upper_for_squared_error": "2/10^19"
+}
