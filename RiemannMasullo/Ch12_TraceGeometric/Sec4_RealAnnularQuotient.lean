@@ -352,4 +352,19 @@ theorem evenFlatToQuotientLp_eq_flatTheta (s : ℝ) (hs : 0 ≤ s) (v : ↥evenF
   rw [weightedTheta_eq, hp]
 
 
+private theorem quotientHalfTwistFun_eq_sqrt_mul (f : ℝ → ℂ) (q : J) :
+    quotientHalfTwistFun f q = (Real.sqrt (R(q)) : ℂ) * f (R(q)) := rfl
+
+/-- The local half-twist multiplies the norm-coordinate representative by the square root of its argument. -/
+theorem quotientHalfTwistFun_apply (f : ℝ → ℂ) (q : J) :
+    quotientHalfTwistFun f q = (Real.sqrt (R(q)) : ℂ) * f (R(q)) :=
+  quotientHalfTwistFun_eq_sqrt_mul f q
+
+/-- The squared integral of a measurable half-twisted representative transforms by
+the norm-one Haar mass at every real Sobolev exponent. -/
+theorem integral_sq_quotientHalfTwistFun (s : ℝ) (f : ℝ → ℂ) (hf : Measurable f) :
+    (∫ q : J, ‖quotientHalfTwistFun f q‖ ^ 2 ∂ν(s)) =
+      c₀ * ∫ x, ‖f x‖ ^ 2 ∂positiveRayLogMeasure s :=
+  halfTwist_sq_integral s f hf
+
 end RiemannMasullo.AnnularBand
