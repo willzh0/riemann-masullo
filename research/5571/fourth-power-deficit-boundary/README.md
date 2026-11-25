@@ -9,6 +9,8 @@ $$
 $$
 where $\delta_\chi=\mathbf1_{\chi=1}$ and $[v]_+=\max(v,0)$. A field-ramified rational prime is included whenever its indicated local character is unramified. Write $\eta=\sup(\{1/2\}\cup\{\Re\rho\})$, with nontrivial completed zeros counted with multiplicity, and $s=4\eta+5$. All implicit constants may depend on the individual field and normalized character.
 
+The [single-subsequence proof](subsequence.md) strengthens the all-field limsup statement below to an ordinary clamped limit and obtains a constant-factor lower bound from each individual exterior zero on every sufficiently large prefix.
+
 ## The boundary distinguishes three cases
 
 If $1/2<\eta\le1$, then the following hold.
