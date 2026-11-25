@@ -82,3 +82,5 @@ python verify.py
 ```
 
 Each script writes its JSON receipt beside itself. The operator interpretation credits mlyle's restriction and finite-projection constructions and mrshu's signed trace and iterated-limit argument. The new calculation and signed bounds concern their lost-jet scalar on the restricted physical test class.
+
+The [prime-side calculation and short-support proof](PRIME-SIDE.md) independently evaluate the full trace from 8 and 11 prime powers. They also recover the contribution of each rational prime power from arbitrarily short, polar-free tests.
