@@ -2449,7 +2449,7 @@ private theorem spectralBoundary_disc_image {Y Z : Type*}
     (hψ.isUniformInducing.completeSpace_congr hsurj).mpr hB.complete⟩
 
 /-- Every bounded sequence in a complete Hausdorff locally convex space lies in one Banach disc. The ℓ¹ synthesis construction is from the Chapter 7 biorthogonal certificate; factoring out its kernel removes the biorthogonality assumption. -/
-private theorem spectralBoundary_bounded_common_disc {I E : Type*} [DecidableEq I]
+theorem exists_isBanachDisc_of_isVonNBounded_range {I E : Type*} [DecidableEq I]
     [AddCommGroup E] [Module ℂ E] [UniformSpace E] [IsUniformAddGroup E]
     [PolynormableSpace ℂ E] [T2Space E] [CompleteSpace E]
     (v : I → E) (bnd : IsVonNBounded ℂ (range v))
@@ -2605,7 +2605,7 @@ private theorem spectralBoundary_presentation_of_rapid_columns {H E : Type*}
     change p j ((c n : ℂ)⁻¹ • R (b n)) ≤ C
     rw [map_smul_eq_mul,norm_inv,Complex.norm_real,Real.norm_eq_abs,abs_of_pos (hc n),inv_mul_eq_div]
     exact (div_le_iff₀ (hc n)).mpr (hC n)
-  obtain ⟨D,hD,hv⟩ := spectralBoundary_bounded_common_disc v bv
+  obtain ⟨D,hD,hv⟩ := exists_isBanachDisc_of_isVonNBounded_range v bv
   let L (n : ℕ) : H →L[ℂ] ℂ := innerSL ℂ (b n)
   have hL : EquicontinuousAt (fun n x ↦ L n x) 0 := by
     apply Metric.equicontinuousAt_of_continuity_modulus (fun x : H ↦ ‖x‖)
@@ -3475,7 +3475,7 @@ private theorem spectralBoundary_interleave {X H₀ H₁ E : Type*}
     cases i with
     | inl n => exact Or.inl (r₀.vector_mem n)
     | inr n => exact Or.inr (r₁.vector_mem n)
-  obtain ⟨D,hD,hmem⟩ := spectralBoundary_bounded_common_disc v hb
+  obtain ⟨D,hD,hmem⟩ := exists_isBanachDisc_of_isVonNBounded_range v hb
   let w (n : ℕ) : Submodule.span ℂ D := ⟨v (e.symm n),Submodule.subset_span (hmem (e.symm n))⟩
   let r : NuclearPresentation (S₀.comp P₀ + S₁.comp P₁) := {
     coeff := c ∘ e.symm
@@ -5461,7 +5461,7 @@ private theorem finiteNuclearity_trace_jet_bounds_rescale {I E : Type*}
         exact (hC j).trans (mul_le_mul_of_nonneg_right (le_max_left ..) (pow_nonneg (hW _) _))
       _ = max C 0 * (r j * W j ^ m) := by ring
       _ ≤ _ := mul_le_mul_of_nonneg_left (hL j) (le_max_right ..)
-  obtain ⟨disc, hdisc, hv⟩ := spectralBoundary_bounded_common_disc _ hbounded
+  obtain ⟨disc, hdisc, hv⟩ := exists_isBanachDisc_of_isVonNBounded_range _ hbounded
   let scaled (j : I) : StrongDual ℂ E := ((a j : ℂ) * (a j : ℂ))⁻¹ • row j
   let norms (j : I) := (normSeminorm ℂ ℂ).comp (scaled j).toLinearMap
   have bounded : BddAbove (range norms) := by

@@ -6316,7 +6316,8 @@ private theorem sLocalMellinSchwartzBounds_meyer_rational_normOne_trivial (h : (
 
 open LineDeriv in
 
-private theorem sLocalMellinSchwartzBounds_meyer_rational_mass_pos : 0 < (sLocalNormOneQuotientMeasure ℚ ∅).real univ := by
+/-- The total mass of the rational norm-one quotient at the empty finite stage is positive. -/
+theorem sLocalNormOneQuotientMeasure_ratEmpty_mass_pos : 0 < (sLocalNormOneQuotientMeasure ℚ ∅).real univ := by
   let : MeasurableSpace (sIdeleQuotientNorm ℚ ∅).ker := borel _
   let : BorelSpace (sIdeleQuotientNorm ℚ ∅).ker := ⟨rfl⟩
   have := (sLocalNormOneQuotientMeasure_normProduct (F := ℚ) (S := ∅)).1
@@ -6341,6 +6342,31 @@ private theorem sLocalMellinSchwartzBounds_meyer_rational_homTheta (χ₀ : Pont
   · have := sLocalMellinSchwartzBounds_meyer_rational_normOne_trivial h
     subst this
     simp
+
+/-- At the empty rational finite stage the homogeneous theta function is the sign sum of
+its real profile, evaluated at the quotient norm and multiplied by the angular Haar mass. -/
+theorem sLocalHomogeneousTheta_ratEmpty_eq_evenProfile
+    (χ : PontryaginDual (sIdeleQuotientNorm ℚ ∅).ker)
+    (f : SchwartzBruhat (Multiplicative (SAdeleRing ℚ ∅))) (p : ℝ → ℂ)
+    (hp : ∀ x : SAdeleRing ℚ ∅, f (Multiplicative.ofAdd x) =
+      p (InfinitePlace.Completion.ringEquivRealOfIsReal Rat.isReal_infinitePlace
+        (x.1 Rat.infinitePlace))) (q : SIdeleQuotient ℚ ∅) :
+    let r : ℝ := ((sIdeleQuotientNorm ℚ ∅ q).val : ℝ)
+    sLocalHomogeneousAdelicThetaLinearMap ℚ ∅ χ f q =
+      ((sLocalNormOneQuotientMeasure ℚ ∅).real univ : ℂ) * (p r + p (-r)) := by
+  obtain ⟨u, rfl⟩ := QuotientGroup.mk_surjective q
+  let t := InfinitePlace.Completion.ringEquivRealOfIsReal Rat.isReal_infinitePlace
+    (u.val.1 Rat.infinitePlace)
+  have hr : ((sIdeleQuotientNorm ℚ ∅ (QuotientGroup.mk u)).val : ℝ) = |t| :=
+    (sLocalMellinSchwartzBounds_meyer_rational_norm u).trans
+      (sLocalMellinSchwartzBounds_meyer_rational_abs _).symm
+  rw [sLocalMellinSchwartzBounds_meyer_rational_homTheta,
+    sLocalMellinSchwartzBounds_meyer_rational_thetaClasses f p hp u]
+  change _ * (p t + p (-t)) = _
+  rw [hr]
+  rcases le_total 0 t with h | h
+  · rw [abs_of_nonneg h]
+  · rw [abs_of_nonpos h, neg_neg, add_comm]
 
 private theorem sLocalMellinSchwartzBounds_meyer_rational_test_coordinates :
     ∃ E : SchwartzMap ℝ ℂ ≃L[ℂ] ℬ(SAdeleRing ℚ ∅),
@@ -6612,7 +6638,7 @@ private theorem sLocalMellinSchwartzBounds_meyer_rational_even_real_profiles :
     (1/2 : ℂ) • E.toContinuousLinearMap
   let L := (sLocalAdelicTheta ℚ ∅).ker.mkQL.comp A
   let P (g : SchwartzBruhat (Multiplicative (SAdeleRing ℚ ∅))) := S (E.symm g)
-  refine ⟨_,sLocalMellinSchwartzBounds_meyer_rational_mass_pos,P,L,fun g ↦ ?_⟩
+  refine ⟨_,sLocalNormOneQuotientMeasure_ratEmpty_mass_pos,P,L,fun g ↦ ?_⟩
   have coord (g : SchwartzBruhat (Multiplicative (SAdeleRing ℚ ∅))) (x : SAdeleRing ℚ ∅) :
       g (Multiplicative.ofAdd x) = E.symm g (InfinitePlace.Completion.ringEquivRealOfIsReal
         Rat.isReal_infinitePlace (x.1 Rat.infinitePlace)) := by rw [← hE,E.apply_symm_apply]
