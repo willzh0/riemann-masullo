@@ -11,6 +11,8 @@ where $\delta_\chi=\mathbf1_{\chi=1}$ and $[v]_+=\max(v,0)$. A field-ramified ra
 
 The [single-subsequence proof](subsequence.md) strengthens the all-field limsup statement below to an ordinary clamped limit and obtains a constant-factor lower bound from each individual exterior zero on every sufficiently large prefix.
 
+The [joint Lean verification](verification.md) covers the precise all-field, all-character cumulative epsilon criterion in both directions.
+
 ## The boundary distinguishes three cases
 
 If $1/2<\eta\le1$, then the following hold.
