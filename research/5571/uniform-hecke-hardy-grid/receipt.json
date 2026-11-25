@@ -1,0 +1,208 @@
+{
+  "parameters": {
+    "k": "integer >= 3",
+    "degree": "1 <= d <= k",
+    "N": "any fixed integer >= 100*d*k",
+    "p": "integer >= k and N/(100*d)",
+    "H": "100000*d*p^2",
+    "log2_J": "100*p",
+    "log2_n_lower": "1000000*d*p^2",
+    "green_log2_clearance_b": "7+k+d*(k+7)",
+    "p_for_L_binary_logarithmic_places": "max(p0,2*b+L+1)"
+  },
+  "fractional_strict_inequalities": {
+    "e_lower": [
+      "2",
+      "5/2"
+    ],
+    "e_upper": [
+      "49/18",
+      "11/4"
+    ],
+    "e_below_2_to_three_halves": [
+      "121/16",
+      "8"
+    ],
+    "quarter_plane_gain": [
+      "2",
+      "625/256"
+    ],
+    "six_times_B_plus_4_over_2^k": [
+      "9",
+      "16"
+    ],
+    "two_times_B_plus_40_over_2^k": [
+      "12",
+      "16"
+    ],
+    "boundary_constant_for_3^d": [
+      "9",
+      "16"
+    ],
+    "inverse_euler_filter": [
+      "2",
+      "289/144"
+    ],
+    "node_prefactor_over_2^k": [
+      "30",
+      "32"
+    ],
+    "fourier_ratio_squared": [
+      "25/64",
+      "1/2"
+    ],
+    "fourier_aliasing_prefactor": [
+      "11/3",
+      "4"
+    ],
+    "jensen_log_lower": [
+      "1/20",
+      "1/19"
+    ],
+    "critical_segment_radius_squared": [
+      "5/2",
+      "64/25"
+    ],
+    "harnack_ratio": [
+      "67/3",
+      "24"
+    ],
+    "blaschke_denominator": [
+      "17/5",
+      "4"
+    ],
+    "near_prefactor": [
+      "348480000",
+      "536870912"
+    ],
+    "far_prefactor": [
+      "22448000",
+      "33554432"
+    ],
+    "clipped_predictor_energy_prefactor": [
+      "1186/81",
+      "20"
+    ],
+    "ellipsoid_factor": [
+      "50",
+      "64"
+    ],
+    "rounding_and_row_norm_prefactor": [
+      "104/9",
+      "12"
+    ],
+    "12_times_64": [
+      "768",
+      "1024"
+    ],
+    "final_error_divided_by_epsilon": [
+      "513/4096",
+      "1"
+    ],
+    "gamma_bound_3_to_2": [
+      "3",
+      "4"
+    ]
+  },
+  "positive_polynomial_certificates": {
+    "strip_exponent_slack": {
+      "minimum_at_k3_d1": 233,
+      "shifted_coefficients": {
+        "a^0 b^0": 233,
+        "a^0 b^1": 271,
+        "a^1 b^0": 92,
+        "a^1 b^1": 96
+      }
+    },
+    "extrapolation_onset_slack": {
+      "minimum_at_k3_d1": 8999922,
+      "shifted_coefficients": {
+        "a^0 b^0": 8999922,
+        "a^0 b^1": 8999972,
+        "a^1 b^0": 5999986,
+        "a^1 b^1": 5999996,
+        "a^2 b^0": 1000000,
+        "a^2 b^1": 1000000
+      }
+    },
+    "two_v_minus_parenthesized_k_plus_5": {
+      "minimum_at_k3_d1": 88,
+      "shifted_coefficients": {
+        "a^0 b^0": 88,
+        "a^1 b^0": 23
+      }
+    },
+    "110dk_minus_local_log_bound": {
+      "minimum_at_k3_d1": 8,
+      "shifted_coefficients": {
+        "a^0 b^0": 8,
+        "a^0 b^1": 18,
+        "a^1 b^0": 8,
+        "a^1 b^1": 9
+      }
+    },
+    "near_clipping_exponent_slack": {
+      "minimum_at_k3_d1": 9180,
+      "shifted_coefficients": {
+        "a^0 b^0": 9180,
+        "a^0 b^1": 9180,
+        "a^1 b^0": 8760,
+        "a^1 b^1": 8760,
+        "a^2 b^0": 1900,
+        "a^2 b^1": 1900
+      }
+    },
+    "near_2_to_minus_k_over_64": {
+      "minimum_at_k3_d1": 70,
+      "shifted_coefficients": {
+        "a^0 b^0": 70,
+        "a^1 b^0": 35
+      }
+    },
+    "460k^2_minus_parenthesized_3224_plus_100k^2": {
+      "minimum_at_k3_d1": 16,
+      "shifted_coefficients": {
+        "a^0 b^0": 16,
+        "a^1 b^0": 2160,
+        "a^2 b^0": 360
+      }
+    },
+    "far_moment_bracket_slack": {
+      "minimum_at_k3_d1": 238,
+      "shifted_coefficients": {
+        "a^0 b^0": 238,
+        "a^1 b^0": 380,
+        "a^2 b^0": 100
+      }
+    },
+    "far_2_to_minus_k_over_64": {
+      "minimum_at_k3_d1": 248,
+      "shifted_coefficients": {
+        "a^0 b^0": 248,
+        "a^1 b^0": 93
+      }
+    },
+    "log2_n_minus_parenthesized_6_plus_6H": {
+      "minimum_at_k3_d1": 3599994,
+      "shifted_coefficients": {
+        "a^0 b^0": 3599994,
+        "a^0 b^1": 3600000,
+        "a^1 b^0": 2400000,
+        "a^1 b^1": 2400000,
+        "a^2 b^0": 400000,
+        "a^2 b^1": 400000
+      }
+    },
+    "log2_n_minus_parenthesized_2k_plus_20": {
+      "minimum_at_k3_d1": 8999974,
+      "shifted_coefficients": {
+        "a^0 b^0": 8999974,
+        "a^0 b^1": 9000000,
+        "a^1 b^0": 5999998,
+        "a^1 b^1": 6000000,
+        "a^2 b^0": 1000000,
+        "a^2 b^1": 1000000
+      }
+    }
+  }
+}
