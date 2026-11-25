@@ -1,0 +1,10 @@
+precision 128
+  A_minus(4), lower from [0.49,0.50]: [3.3677485882475e-5 +/- 3.30e-19]
+  A_plus(4), lower from [1.19,1.20]: [1.7548787720489e-6 +/- 1.09e-20]
+  Q at x=2, variance log 2, primes through 4096: [-0.0093739531751374 +/- 4.58e-17] + [0.024025345258382 +/- 4.36e-16]j
+  omitted complex modulus upper: [5.3948462927408e-6 +/- 3.28e-20]
+precision 192
+  A_minus(4), lower from [0.49,0.50]: [3.3677485882475e-5 +/- 3.30e-19]
+  A_plus(4), lower from [1.19,1.20]: [1.7548787720489e-6 +/- 1.09e-20]
+  Q at x=2, variance log 2, primes through 4096: [-0.0093739531751374 +/- 4.58e-17] + [0.024025345258382 +/- 4.36e-16]j
+  omitted complex modulus upper: [5.3948462927408e-6 +/- 3.28e-20]
