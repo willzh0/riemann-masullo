@@ -1,0 +1,42 @@
+[
+  {
+    "j": 2,
+    "x": 16,
+    "modulus": 263,
+    "auxiliary": [
+      4099,
+      4111
+    ],
+    "primitive_modulus_rows": 261,
+    "true_complete_cell_sizes": {
+      "(-1, -1)": 1,
+      "(-1, 1)": 0,
+      "(1, -1)": 0,
+      "(1, 1)": 8
+    },
+    "four_complete_second_moments_checked": true,
+    "prime_fourth_moment_checked": true,
+    "mean_single_prime_sample_deficit": "[9.69955783010208948478450828744786059392734098 +/- 5.12e-45]",
+    "mean_optimized_complete_sample_deficit": "0"
+  },
+  {
+    "j": 3,
+    "x": 81,
+    "modulus": 257,
+    "auxiliary": [
+      531457,
+      531481
+    ],
+    "primitive_modulus_rows": 255,
+    "true_complete_cell_sizes": {
+      "(-1, -1)": 9,
+      "(-1, 1)": 6,
+      "(1, -1)": 3,
+      "(1, 1)": 13
+    },
+    "four_complete_second_moments_checked": true,
+    "prime_fourth_moment_checked": false,
+    "mean_single_prime_sample_deficit": "[168.8971527132275546232411075221653545859489549 +/- 1.75e-44]",
+    "mean_optimized_complete_sample_deficit": "[36.97018033874393603221216246585211761521651951 +/- 2.92e-45]"
+  }
+]
