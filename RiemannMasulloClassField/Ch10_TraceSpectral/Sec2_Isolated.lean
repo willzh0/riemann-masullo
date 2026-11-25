@@ -1,7 +1,7 @@
 module
 
-public import RiemannMasullo.Ch06_LocalGlobal.Sec3_HeckeProductMultiplicities
 public import RiemannMasullo.Ch10_TraceSpectral.Sec2
+public import RiemannMasulloClassField.AbelianHeckeMultiplicities
 public import RiemannMasulloClassField.CyclicNormDescent
 import Mathlib.FieldTheory.PrimitiveElement
 
@@ -10,10 +10,9 @@ import Mathlib.FieldTheory.PrimitiveElement
 Proposition 10.2.2.2, pp. 446–447, leads the project to ask for a single integer bounding
 the multiplicities of all unitary Hecke characters of each fixed field (#7220).
 The statements here reduce that assertion to characters with trivial rational stabilizer
-on the fields reachable by prime-degree Galois descent. The arithmetic hypothesis
-`EulerComparison` is the local Artin product outside finitely many base primes, on the
-ordinary Euler half-plane. Norm descent, the full set of twists, the analytic passage
-to every complex point and the finite degree recursion are proved. -/
+on the fields reachable by prime-degree Galois descent. Class field theory yields
+norm descent and the Euler factorization. The finite recursion preserves the total
+field degree and the multiplicity function at every complex point. -/
 
 @[expose] public noncomputable section
 
@@ -74,7 +73,6 @@ theorem chartBound_iff {χ : PontryaginDual (ideleClassNorm F).ker → U[F]}
   · exact fun h ω b t ↦ h (χ ω) ((b : ℂ) + (t : ℂ) * Complex.I)
 
 local notation "N(" K ", " e ")" => IdeleClassGroup.normContinuousMonoidHom (e : Step K).val K
-local notation "V[" K "]" => HeightOneSpectrum (𝓞 K)
 
 /-- Enumerate all characters trivial on the actual relative norm, once each. -/
 def normTwists (e : Step F) :
@@ -82,28 +80,19 @@ def normTwists (e : Step F) :
   let : IsGalois e.val F := e.property.1
   exact (primeDegree_ideleClass_normTwist_indexing e.val F e.property.2).choose
 
-/-- Classical input: the local induction formula for a cyclic base change, translated
-to the project's finite Euler factors, outside a finite set of base primes. The lower
-character is any continuous unitary character. See John Tate, *Number theoretic
-background*, Corvallis (1979), §2.3.2 and §3.3.2, p. 14, for induction and the
-Frobenius determinant defining the nonarchimedean factor. -/
-def EulerComparison (e : Step F) (ν : U[e.val]) : Prop :=
-  ∃ B : Finset (V[e.val]), ∀ (v : V[e.val]), v ∉ B → ∀ s : {z : ℂ // 1 < z.re},
-    (∏' w : {w : V[F] // w.under (𝓞 e.val) = v},
-        finiteHeckeEulerFactor (ν.comp N(F, e)) w.val s) =
-      ∏ i, finiteHeckeEulerFactor (ν * (normTwists e i).val) v s
-
-/-- Under the good-prime local comparison, the orders of the norm pullback add at every
-complex point, including repeated zeros of different twists. -/
-theorem normPullback_multiplicity (e : Step F) (ν : U[e.val]) (h : EulerComparison e ν) (z : ℂ) :
+/-- The orders of the norm pullback add at every complex point, including repeated
+zeros of distinct twists. -/
+theorem normPullback_multiplicity (e : Step F) (ν : U[e.val]) (z : ℂ) :
     m(ν.comp N(F, e), z) = ∑ i, m(ν * (normTwists e i).val, z) := by
-  obtain ⟨B, hB⟩ := h
-  exact spectralZeroMultiplicity_eq_sum_of_localEulerFactors_off_finset
-    (ν.comp N(F, e)) (fun i ↦ ν * (normTwists e i).val) B hB z
+  let : IsGalois e.val F := e.property.1
+  let : Fact (Module.finrank e.val F).Prime := ⟨e.property.2⟩
+  let : IsCyclic Gal(F/e.val) := isCyclic_of_prime_card (IsGalois.card_aut_eq_finrank e.val F)
+  let : IsAbelianGalois e.val F := IsAbelianGalois.of_isCyclic e.val F
+  exact abelian_normPullback_multiplicity (normTwists e) ν z
 
 /-- Every lower-field multiplicity is bounded by that of its own norm pullback at the
 same point. In particular, a field's multiplicity bound passes to each cyclic subfield. -/
-theorem multiplicity_le_normPullback (e : Step F) (ν : U[e.val]) (h : EulerComparison e ν) (z : ℂ) :
+theorem multiplicity_le_normPullback (e : Step F) (ν : U[e.val]) (z : ℂ) :
     m(ν, z) ≤ m(ν.comp N(F, e), z) := by
   obtain ⟨j, hj⟩ := (normTwists e).surjective 1
   have hj' : (normTwists e j).val = 1 := congrArg Subtype.val hj
@@ -112,21 +101,16 @@ theorem multiplicity_le_normPullback (e : Step F) (ν : U[e.val]) (h : EulerComp
     _ ≤ ∑ i, m(ν * (normTwists e i).val, z) :=
       Finset.single_le_sum (f := fun i ↦ m(ν * (normTwists e i).val, z))
         (fun _ _ ↦ Nat.zero_le _) (Finset.mem_univ j)
-    _ = m(ν.comp N(F, e), z) := (normPullback_multiplicity e ν h z).symm
+    _ = m(ν.comp N(F, e), z) := (normPullback_multiplicity e ν z).symm
 
-variable (hEuler : ∀ (K : Type u) [Field K] [NumberField K], Below F K →
-  ∀ (e : Step K) (ν : U[e.val]), EulerComparison e ν)
-
-include hEuler in
 private theorem bound_below {M : ℕ} (hF : ∀ (ψ : U[F]) (z : ℂ), m(ψ, z) ≤ M)
     {K : Type u} [Field K] [NumberField K] (hK : Below F K) :
     ∀ (ν : U[K]) (z : ℂ), m(ν, z) ≤ M := by
   induction hK with
   | root => exact hF
-  | @step L _ _ hL e ih =>
-    exact fun ν z ↦ (multiplicity_le_normPullback e ν (hEuler L hL e ν) z).trans (ih _ _)
+  | step _ e ih =>
+    exact fun ν z ↦ (multiplicity_le_normPullback e ν z).trans (ih _ _)
 
-include hEuler in
 private theorem bound_from_leaves
     (hleaf : ∀ (K : Type u) [Field K] [NumberField K], Below F K →
       ∃ M : ℕ, ∀ (ψ : U[K]), TrivialStabilizer ψ → ∀ z : ℂ, m(ψ, z) ≤ M)
@@ -149,14 +133,13 @@ private theorem bound_from_leaves
     obtain ⟨e, ν, rfl⟩ := exists_primeDegree_norm_descent_of_nontrivial_stabilizer K ψ hψ
     calc
       m(ν.comp N(K, e), z) = ∑ i, m(ν * (normTwists e i).val, z) :=
-        normPullback_multiplicity e ν (hEuler K hK e ν) z
+        normPullback_multiplicity e ν z
       _ ≤ ∑ _i : Fin (Module.finrank e.val K), B e :=
         Finset.sum_le_sum (fun i _ ↦ hB e _ _)
       _ = Module.finrank e.val K * B e := by simp
       _ ≤ D := hD ⟨e, rfl⟩
       _ ≤ max M D := le_max_right _ _
 
-include hEuler in
 /-- The field-wise multiplicity assertion of #7220 is equivalent to a bound, for each
 reachable cyclic-tower subfield, on only its characters with trivial rational stabilizer.
 Each subfield has its own bound, uniform over its characters and ordinates. -/
@@ -167,9 +150,9 @@ theorem chartBound_iff_orbitFree_below
         ∃ M : ℕ, ∀ (ψ : U[K]), TrivialStabilizer ψ → ∀ z : ℂ, m(ψ, z) ≤ M := by
   constructor
   · rintro ⟨M, hM⟩ K _ _ hK
-    exact ⟨M, fun ψ _ ↦ bound_below hEuler ((chartBound_iff hχ M).mp hM) hK ψ⟩
+    exact ⟨M, fun ψ _ ↦ bound_below ((chartBound_iff hχ M).mp hM) hK ψ⟩
   · intro h
-    obtain ⟨M, hM⟩ := bound_from_leaves hEuler h _ F rfl .root
+    obtain ⟨M, hM⟩ := bound_from_leaves h _ F rfl .root
     exact ⟨M, (chartBound_iff hχ M).mpr hM⟩
 
 private theorem multiset_sum_values {α ι : Type*} [Fintype ι]
@@ -181,7 +164,6 @@ private theorem multiset_sum_values {α ι : Type*} [Fintype ι]
       map_add' := fun s t ↦ by simp }
   exact map_sum a l Finset.univ
 
-include hEuler in
 /-- The zero-multiplicity functions in a finite factorization are independent of height.
 Each entry records the absolute degree and the full multiplicity function of one terminal
 unitary Hecke character. Repetitions count with their multiplicity. -/
@@ -217,11 +199,10 @@ theorem exists_orbitFree_decomposition (ψ : U[F]) :
       · rw [multiset_sum_values]
         simp only [hsum, Finset.sum_const, Finset.card_univ, Fintype.card_fin, smul_eq_mul]
         rw [Nat.mul_comm, Module.finrank_mul_finrank]
-      · rw [multiset_sum_values, normPullback_multiplicity e ν (hEuler K hK e ν) z]
+      · rw [multiset_sum_values, normPullback_multiplicity e ν z]
         exact Finset.sum_congr rfl (fun i _ ↦ horders i z)
   exact go _ F rfl .root ψ
 
-include hEuler in
 /-- Any upper bound on multiplicity divided by the field degree propagates with
 the same constant. The hypothesis and conclusion are pointwise at the same ordinate. -/
 theorem multiplicity_mul_le_of_orbitFree_below
@@ -230,7 +211,7 @@ theorem multiplicity_mul_le_of_orbitFree_below
       ∀ (ν : U[K]), TrivialStabilizer ν →
         m(ν, z) * b ≤ a * Module.finrank ℚ K) :
     m(ψ, z) * b ≤ a * Module.finrank ℚ F := by
-  obtain ⟨l, hleaf, hdeg, horder⟩ := exists_orbitFree_decomposition hEuler ψ
+  obtain ⟨l, hleaf, hdeg, horder⟩ := exists_orbitFree_decomposition ψ
   have hvalue (v : ℕ × (ℂ → ℕ)) (hv : v ∈ l) : v.2 z * b ≤ a * v.1 := by
     obtain ⟨K, _, _, ν, hK, hν, rfl⟩ := hleaf v hv
     exact h K hK ν hν
@@ -239,9 +220,7 @@ theorem multiplicity_mul_le_of_orbitFree_below
 
 /-- The global field-wise assertion of #7220 only requires fields' stabilizer-free
 unitary characters. The uniform integer on either side is allowed to depend on the field. -/
-theorem all_chartBounds_iff_orbitFree
-    (hlocal : ∀ (K : Type u) [Field K] [NumberField K] (e : Step K) (ν : U[e.val]),
-      EulerComparison e ν) :
+theorem all_chartBounds_iff_orbitFree :
     (∀ (K : Type u) [Field K] [NumberField K]
       (χ : PontryaginDual (ideleClassNorm K).ker → U[K]), IsSpectralBasepointChoice (F := K) χ →
         ∃ M : ℕ, ∀ (ω : PontryaginDual (ideleClassNorm K).ker) (b t : ℝ),
@@ -254,7 +233,7 @@ theorem all_chartBounds_iff_orbitFree
     obtain ⟨M, hM⟩ := h K χ hχ
     exact ⟨M, fun ψ _ ↦ (chartBound_iff hχ M).mp hM ψ⟩
   · intro h K _ _ χ hχ
-    exact (chartBound_iff_orbitFree_below (fun E _ _ _ ↦ hlocal E) hχ).mpr
+    exact (chartBound_iff_orbitFree_below hχ).mpr
       (fun E _ _ _ ↦ h E)
 
 end RiemannMasullo.Isolated.CyclicMultiplicity
