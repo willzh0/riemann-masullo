@@ -1,0 +1,27 @@
+{
+  "bits": 144,
+  "mass_step": "2^-24",
+  "physical_radius": 6,
+  "early_indices": [
+    1,
+    128
+  ],
+  "local_squared_norm_ceiling": "2.095",
+  "early_full_weak_norm_strict_upper": "2.13",
+  "lehmer_indices": [
+    6709,
+    6710
+  ],
+  "local_sites_at_each": [
+    6703,
+    6716
+  ],
+  "local_squared_norm_strict_lowers": [
+    "21.45",
+    "23.25"
+  ],
+  "full_weak_norm_strict_lowers": [
+    "2.45",
+    "2.55"
+  ]
+}
