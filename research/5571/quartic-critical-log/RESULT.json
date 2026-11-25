@@ -1,0 +1,62 @@
+{
+  "character": "chi modulo five with chi(2) = +i",
+  "Cauchy_scale": "3/2",
+  "Euler_reference": "s=2",
+  "sharper_certificate": "hurwitz",
+  "runs": [
+    {
+      "engine": "dirichlet",
+      "precision_bits": 104,
+      "Taylor_terms": 20,
+      "strict_bounds": {
+        "elementary_G_upper": "0.00311657",
+        "jensen_G_upper": "0.00195337"
+      },
+      "recorded_seconds": 59.375,
+      "T": 2048,
+      "subcells": 1573120,
+      "quarter_cells": 16384,
+      "ledger_upper": "-0.0304089255878960",
+      "reference_lower": "-0.0307643344381812",
+      "elementary_tail_upper": "0.0027611583144409",
+      "jensen_tail_upper": "0.0015979587552050",
+      "elementary_G_upper": "0.0031165671647259",
+      "jensen_G_upper": "0.0019533676054900",
+      "elementary_below_0.005": true,
+      "jensen_below_0.005": true,
+      "input_file": "dirichlet-2048",
+      "cells_sha256": "ea6cd96cef4067ab974f6b817577fa7a9ba1f2fa92b9bddc823e71a2a3de2875",
+      "receipt_sha256": "7dd171a8e57b9924a3dba99f2fac4e08de29cf55f3538199df5cee7509df79a3",
+      "verifier_sha256": "c1413ab74383fca40fcacc074b5e80faf7df4b1923dab4a98e7f13ce5a4a7277"
+    },
+    {
+      "engine": "hurwitz",
+      "precision_bits": 144,
+      "Taylor_terms": 22,
+      "strict_bounds": {
+        "elementary_G_upper": "0.00311647",
+        "jensen_G_upper": "0.00195327"
+      },
+      "recorded_seconds": 72.605,
+      "T": 2048,
+      "subcells": 1573120,
+      "quarter_cells": 16384,
+      "ledger_upper": "-0.0304090254342073",
+      "reference_lower": "-0.0307643344381812",
+      "elementary_tail_upper": "0.0027611583144409",
+      "jensen_tail_upper": "0.0015979587552050",
+      "elementary_G_upper": "0.0031164673184146",
+      "jensen_G_upper": "0.0019532677591788",
+      "elementary_below_0.005": true,
+      "jensen_below_0.005": true,
+      "input_file": "hurwitz-2048",
+      "cells_sha256": "5ee88a972c02a4448f9973f3db0dceede8872c3da4bcd31fb7803fed82f0a79b",
+      "receipt_sha256": "82255a5598ec3c28b726e08a3ab7551936ad9b5f58ea0e9fabd8ddb0b36552f5",
+      "verifier_sha256": "c1413ab74383fca40fcacc074b5e80faf7df4b1923dab4a98e7f13ce5a4a7277"
+    }
+  ],
+  "damaged_ledgers_rejected": [
+    "omitted_height_cell",
+    "switched_sign"
+  ]
+}

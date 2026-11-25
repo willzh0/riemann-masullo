@@ -1,0 +1,86 @@
+{
+  "scale": 1152921504606846976,
+  "T": 2048,
+  "precision_bits": 104,
+  "taylor_terms": 20,
+  "fine_bits": 16,
+  "coarse_bits_min": 7,
+  "engine": "dirichlet",
+  "quarter_centers": 16384,
+  "subcells": 1573120,
+  "majorant_negative_scaled": [
+    -88187561758235248,
+    -88187561758227056
+  ],
+  "majorant_positive_scaled": [
+    53128457515944059,
+    53128457515952251
+  ],
+  "majorant_compact_scaled": [
+    -35059104242291189,
+    -35059104242274805
+  ],
+  "compact_integral_upper_decimal": "-0.03040892558789",
+  "tails": {
+    "elementary_upper_formula_scaled": [
+      3183398798342796,
+      3183398798342797
+    ],
+    "jensen_upper_formula_scaled": [
+      1842321012350564,
+      1842321012350565
+    ],
+    "pointwise_sqrt_height_constant_scaled": [
+      5764607523034234880,
+      5764607523034234880
+    ],
+    "cauchy_tail_mass_scaled": [
+      537577510675788,
+      537577510675789
+    ],
+    "energy_bound_scaled": [
+      509524133802061805,
+      509524133802061806
+    ],
+    "elementary_upper_decimal": "0.00276115831445",
+    "jensen_upper_decimal": "0.00159795875521"
+  },
+  "reference": {
+    "N": 10000,
+    "log_lower_computed_enclosure": [
+      -35468861728745394,
+      -35468861728745393
+    ],
+    "log_upper_computed_enclosure": [
+      -35468828100399386,
+      -35468828100399385
+    ],
+    "native_log_modulus_enclosure": [
+      -35468837504803535,
+      -35468837504803534
+    ],
+    "two_formula_control_centers_j": [
+      -8192,
+      -65,
+      -2,
+      -1,
+      0,
+      1,
+      63,
+      8191
+    ]
+  },
+  "reference_log_lower_decimal": "-0.03076433355352",
+  "G_elementary_upper_numerator": 3593156284813386,
+  "G_elementary_upper_decimal": "0.00311656628006",
+  "G_jensen_upper_numerator": 2252078498821154,
+  "G_jensen_upper_decimal": "0.00195336672083",
+  "runtime_seconds_before_final_io": 59.375,
+  "workers": 4,
+  "python": "3.13.9",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python_flint": "0.8.0",
+  "FLINT": "3.3.1",
+  "script_sha256": "312c5fb8de99fa7db34a94ed12990eae0f6f41a7afb306dad75e8bada53f9462",
+  "cells_sha256": "ea6cd96cef4067ab974f6b817577fa7a9ba1f2fa92b9bddc823e71a2a3de2875"
+}

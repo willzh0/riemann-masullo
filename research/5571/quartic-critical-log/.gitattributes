@@ -1,0 +1,4 @@
+* text eol=lf
+*.gz -text -diff
+# Preserve the exact bytes and hashes of the two original native JSON receipts.
+*/receipt.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
