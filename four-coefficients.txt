@@ -1,0 +1,7 @@
+128 fixed-point fractional bits, 48 log-series terms, inclusive cutoffs
+n=1 X=25 prime_powers=14 nonzero_real_weights=5 E=[0.127548694932724, 0.127548694932725]
+n=2 X=625 prime_powers=136 nonzero_real_weights=65 E=[-0.254563349069797, -0.254563349069796]
+n=3 X=15625 prime_powers=1880 nonzero_real_weights=941 E=[-0.140028349352675, -0.140028349352674]
+n=4 X=390625 prime_powers=33291 nonzero_real_weights=16670 E=[0.165665134980754, 0.165665134980755]
+positive_prefix(4)=[1.293213829913478, 1.293213829913479] negative_prefix(4)=[1.394591698422471, 1.394591698422472]
+T=20000000 inclusive_N=44444444444444 T_squared_minus_9N=4
