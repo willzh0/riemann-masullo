@@ -1,0 +1,29 @@
+{
+  "modulus": 7,
+  "unit_generator": [
+    2,
+    1
+  ],
+  "unit_order": 48,
+  "ray_order": 12,
+  "conjugation_on_exponents": 7,
+  "selected_indices": [
+    1,
+    11,
+    7,
+    5
+  ],
+  "split_prime": 109,
+  "gaussian_generator": [
+    3,
+    10
+  ],
+  "two_prime_ideal_classes": [
+    2,
+    2
+  ],
+  "first_angular_value": [
+    "-7/25",
+    "24/25"
+  ]
+}

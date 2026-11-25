@@ -1,0 +1,72 @@
+{
+  "last_modulus": 100,
+  "all_characters_invariant": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "examples": {
+    "1": {
+      "all_ray_characters": 1,
+      "invariant": 1,
+      "cyclotomic_modulus": 4
+    },
+    "2": {
+      "all_ray_characters": 1,
+      "invariant": 1,
+      "cyclotomic_modulus": 4
+    },
+    "3": {
+      "all_ray_characters": 2,
+      "invariant": 2,
+      "cyclotomic_modulus": 12
+    },
+    "4": {
+      "all_ray_characters": 2,
+      "invariant": 2,
+      "cyclotomic_modulus": 8
+    },
+    "5": {
+      "all_ray_characters": 4,
+      "invariant": 4,
+      "cyclotomic_modulus": 20
+    },
+    "6": {
+      "all_ray_characters": 4,
+      "invariant": 2,
+      "cyclotomic_modulus": 12
+    },
+    "7": {
+      "all_ray_characters": 12,
+      "invariant": 6,
+      "cyclotomic_modulus": 28
+    },
+    "8": {
+      "all_ray_characters": 8,
+      "invariant": 4,
+      "cyclotomic_modulus": 16
+    },
+    "9": {
+      "all_ray_characters": 18,
+      "invariant": 6,
+      "cyclotomic_modulus": 36
+    },
+    "10": {
+      "all_ray_characters": 8,
+      "invariant": 4,
+      "cyclotomic_modulus": 20
+    },
+    "11": {
+      "all_ray_characters": 30,
+      "invariant": 10,
+      "cyclotomic_modulus": 44
+    },
+    "12": {
+      "all_ray_characters": 16,
+      "invariant": 4,
+      "cyclotomic_modulus": 24
+    }
+  }
+}

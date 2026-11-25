@@ -1,0 +1,13 @@
+{
+  "precision": 192,
+  "conductor_ceiling": 400000,
+  "bin_width": 128,
+  "odd_conductor_pairs": 1642538901,
+  "same_even_conductor_pairs": 821302821,
+  "gaussian_invariant_rows": 2463841722,
+  "rational_factors": 4927683444,
+  "all_invariant_rows_of_absolute_conductor_norm_at_most_ten_billion": 1847865075,
+  "separate_box_upper": "[3.55936177924491004357178587525561196521785465204430726e-107 +/- 4.05e-161]",
+  "uniform_mesh_upper": "[2.75364082530314306728483676059019093921844521643727561e-117 +/- 2.87e-171]",
+  "all_height_original_absolute_sum_upper": "[9.56105700412237483027531858658552753347228660260501723e-113 +/- 7.54e-167]"
+}
