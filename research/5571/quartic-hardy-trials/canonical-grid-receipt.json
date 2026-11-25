@@ -1,0 +1,14 @@
+{
+  "original_stage": 15999999,
+  "normalizer_exponent": 5,
+  "row_degree": 31999999,
+  "extrapolate_precision_input": 192000000,
+  "dyadic_scale": 268435456,
+  "exact_grid_trial_energy": "353065181452571/25000000",
+  "grid_trial_denominator": 10000,
+  "verified_row_error_replacement": "10^-40",
+  "finite_grid_norm_bound": "[0.9291318041576409614689029 +/- 2.47e-26]",
+  "original_row_correction_bound": "[0.0008888888888888888888888889 +/- 1.12e-29]",
+  "upper_argument_bound": "[0.8649384894947476963520447 +/- 7.80e-27]",
+  "green_upper_via_original_grid": "[1.001012485470416969294471 +/- 3.10e-26]"
+}

@@ -1,0 +1,12 @@
+{
+  "coefficient_degree": 256,
+  "trial_degree": 10,
+  "positive_integer_bases": 8223,
+  "requested_bits": 192,
+  "analytic_coefficient_error": "[6.248596461277351403265090e-183 +/- 3.71e-208]",
+  "visible_finite_norm": "[0.9121909290623793883020075 +/- 1.78e-26]",
+  "visible_analytic_error": "[1.873093159289224097702176e-178 +/- 2.51e-205]",
+  "tail_norm_upper": "[0.1766171521499143992961616 +/- 3.73e-26]",
+  "squared_distance_bound": "[0.8632859094972328778526432 +/- 1.36e-27]",
+  "green_bound": "[0.9949317322324809264130292 +/- 2.11e-27]"
+}
