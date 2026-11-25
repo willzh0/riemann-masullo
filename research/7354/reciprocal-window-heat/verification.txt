@@ -1,0 +1,44 @@
+Pinned Lean 4.36.0, native source trees d539b564d7aeb31eb65271c90f3cba2907e92b62 and 14dc40aba457bc1ca6aa871a68b6703805f2c402.
+Both source modules compile with warningAsError=true.
+
+NativeWindow.lean
+'RiemannMasullo.AnnularBand.exists_bruhatTest_cold_centralFinitePart' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RiemannMasullo.AnnularBand.exists_bruhatTest_of_smooth_radialWindow' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RiemannMasullo.AnnularBand.translation_eq_intervalTranslation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RiemannMasullo.AnnularBand.cutoff_eq_intervalCutoff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RiemannMasullo.AnnularBand.testAction_eq_realHaarInterval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RiemannMasullo.AnnularBand.tendsto_quotientBruhatLevel_cold_centralFinitePart' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+SeamStability.lean
+'RiemannMasullo.ThroughOneStability.logProfile_mixed_displacement' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RiemannMasullo.ThroughOneStability.move_endpoints_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RiemannMasullo.ThroughOneStability.sincPrimitive_logShift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RiemannMasullo.ThroughOneStability.phaseKernel_logShift_zeroWeight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RiemannMasullo.ThroughOneStability.phaseWindow_endpoints' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RiemannMasullo.ThroughOneStability.logReference_move' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RiemannMasullo.ThroughOneStability.gaussian_centered_quadratic' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RiemannMasullo.FlatPolar.centralWindow_meanZeroHeat_cold_difference' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+Numerical consistency
+endpoint z=-0.07 coordinate error=8.88e-16 fixed-window error=0.049176
+endpoint z=+0.04 coordinate error=8.88e-16 fixed-window error=0.0079144
+R= 16 hot-cold=-0.023694 E[w(exp(-Z))]-w(1)=+0.000999924 twice-tau=0.001
+R= 64 hot-cold=-0.022304 E[w(exp(-Z))]-w(1)=+0.000999924 twice-tau=0.001
+R=256 hot-cold=-0.020918 E[w(exp(-Z))]-w(1)=+0.000999924 twice-tau=0.001
+cold floor, R_floor=.01,.1,.5: 1.2102008e-09 0.000116078501 0.13593863
