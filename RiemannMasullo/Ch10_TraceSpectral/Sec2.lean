@@ -8612,7 +8612,7 @@ private theorem spectralStripJet_multiple_real_zeros_finite
 
 /-- For one character, a bounded height interval contributes only finitely many multiple-zero
 abscissae in the closed right half of the critical strip. -/
-private theorem spectralStripJet_multiple_zero_lines_finite_on_compact
+theorem spectralStripJet_multiple_zero_lines_finite_on_compact
     (ψ : PontryaginDual C𝔽) (T : ℝ) :
     {σ : ℝ | σ ∈ Icc (1 / 2 : ℝ) 1 ∧ ∃ t : ℝ, |t| ≤ T ∧
       1 < multiplicity(ψ, shift(σ, t))}.Finite := by
