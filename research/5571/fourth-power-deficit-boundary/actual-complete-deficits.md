@@ -11,6 +11,8 @@ For signs $s,t\in\{-1,1\}$, $C'_{s,t}(x)$ is four times the prime Riesz sum on $
 
 The [four-moment calculation](product-moments.md) strengthens the clipped cube saving to an unconditional lower proportion of $1/12$ for either fixed mixed cell and proves a simultaneous lower bound for the complete deficit itself. The [Selberg mean-square estimate](prime-sieve.md) gives the corresponding upper bounds for individual cells. The [full parity law](parity-path.md) determines the coupled distribution of the deficit and the saving under rational RH, and evaluates the correction to the mean unconditionally. The [first Riesz zero-free-region estimate](vk-endpoint.md) gives a full-prefix upper bound with exponential constant $0.644419636701\ldots$ on the $J$ variable.
 
+There is also an unconditional result on consecutive samples. For either fixed mixed class, every sufficiently large $J$ contains a late block of at least $J^{1-\varepsilon}$ consecutive samples with exactly zero complete deficit on at least $1/32$ of the distinct pairs. The probability of zero deficit at the terminal sample alone gives a one-sided rational RH criterion, and the longest zero run distinguishes attainment of the zero abscissa. [Consecutive-window theorem and exact terminal-sample criterion](consecutive-windows.md)
+
 ## A sharp gain from the positive cubes, including after clipping
 
 For the fixed opposite-sign cell $(-,+)$ or $(+,-)$, unconditionally,
