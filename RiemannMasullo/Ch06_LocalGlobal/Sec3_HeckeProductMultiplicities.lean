@@ -194,7 +194,9 @@ theorem spectralZeroMultiplicity_eq_sum_of_finiteHeckeL_eq {ι : Type*} [Fintype
     (fun s ↦ by simpa only [Finset.prod_empty, one_mul] using hEuler s) z
 
 open Classical in
-private theorem finiteHeckeL_omitting_hasProd (χ : U(F)) (S : Finset V(F)) (s : HP) :
+/-- Delete the Euler factors in a finite set of places. The resulting family has the
+ordinary finite Hecke value multiplied by the reciprocal of the omitted factors. -/
+theorem finiteHeckeL_omitting_hasProd (χ : U(F)) (S : Finset V(F)) (s : HP) :
     HasProd (fun v ↦ if v ∈ S then 1 else finiteHeckeEulerFactor χ v s)
       (R(S,χ,s) * finiteHeckeL χ s) := by
   classical
@@ -213,7 +215,9 @@ private theorem finiteHeckeL_omitting_hasProd (χ : U(F)) (S : Finset V(F)) (s :
     simp [c,hv,hn]
   · simp [c,hv]
 
-private theorem finite_prime_fiber [Algebra E F] (v : V(E)) :
+/-- There are only finitely many upper finite places restricting to a prescribed
+finite place of a subfield. -/
+theorem finite_places_over_finite [Algebra E F] (v : V(E)) :
     Set.Finite {w : V(F) | w.under (𝓞 E) = v} := by
   let f : {w : V(F) // w.under (𝓞 E) = v} → v.asIdeal.primesOver (𝓞 F) :=
     fun w ↦ ⟨w.val.asIdeal,w.val.isPrime,⟨(congrArg HeightOneSpectrum.asIdeal w.property).symm⟩⟩
@@ -239,7 +243,7 @@ theorem finiteHeckeL_eq_prod_of_localEulerFactors [Algebra E F] {ι : Type*} [Fi
     hasProd_prod fun i _ ↦ finiteHeckeL_hasProd (ψ i) s
   apply (hu.sigma ?_).unique hd
   intro v
-  let : Fintype {w : V(F) // d w = v} := (finite_prime_fiber (F := F) v).fintype
+  let : Fintype {w : V(F) // d w = v} := (finite_places_over_finite (F := F) v).fintype
   rw [← hlocal v s, tprod_fintype]
   exact hasProd_fintype _
 
@@ -254,7 +258,7 @@ theorem spectralZeroMultiplicity_eq_sum_of_localEulerFactors_off_finset
     (z : ℂ) : mult(χ,z) = ∑ i, mult(ψ i,z) := by
   classical
   let d : V(F) → V(E) := HeightOneSpectrum.under (𝓞 E)
-  let S := B.biUnion fun v ↦ (finite_prime_fiber (F := F) v).toFinset
+  let S := B.biUnion fun v ↦ (finite_places_over_finite (F := F) v).toFinset
   have hS (w : V(F)) : w ∈ S ↔ d w ∈ B := by
     simp [S,d]
   apply spectralZeroMultiplicity_eq_sum_of_imprimitiveHeckeL_eq χ ψ S (fun _ ↦ B)
@@ -269,7 +273,7 @@ theorem spectralZeroMultiplicity_eq_sum_of_localEulerFactors_off_finset
     e.hasProd_iff.mpr hp
   apply (hgroup.sigma ?_).unique hq
   intro v
-  let : Fintype {w : V(F) // d w = v} := (finite_prime_fiber (F := F) v).fintype
+  let : Fintype {w : V(F) // d w = v} := (finite_places_over_finite (F := F) v).fintype
   change HasProd (fun w : {w : V(F) // d w = v} ↦ P w.val) (∏ i, Q i v)
   by_cases hv : v ∈ B
   · have ht (w : {w : V(F) // d w = v}) : w.val ∈ S := (hS _).mpr (w.property.symm ▸ hv)
